@@ -6,7 +6,8 @@ import routes from './routes.js'
 const app = express();
 const port = 3333;
 
-app.use(cors({ origin: 'https://univesp-mg-stock.vercel.app' }));
+app.use(cors())
+// app.use(cors({ origin: 'https://univesp-mg-stock.vercel.app' }));
 app.use(express.json());
 db.connect()
 app.use(routes)
