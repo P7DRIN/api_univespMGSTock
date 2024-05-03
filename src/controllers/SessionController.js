@@ -12,21 +12,24 @@ class SessionController {
 
     async create(req, res){
         // const checkPassword = (user, password) => bcrypt.compare(password, user.password)
-
-        const { username, password } = req.body
-
-        const user = await Account.findOne({ username })
         
-        const checkPassword = await bcrypt.compare(password, user.password);
-        if (!user){
-            return res.status(401).json({error: 'invalid user or password '})
-        }
+        const { username, password } = req.body
+    
+        const account = await Account.findOne({ username })
+        
+        const checkPassword = await bcrypt.compare(password, account.password);
+        
         if(!checkPassword){
             return res.status(401).json({error: 'invalid user or password '})
         }
+        if(!account){
+            return res.status(401).json({error: 'invalid user or password '})
+        }
+
+        const { _id } = account
 
         return res.json({
-            user: {
+            account: {
                 username,
             }, 
             token: jwt.sign({ _id }, SECRET, {

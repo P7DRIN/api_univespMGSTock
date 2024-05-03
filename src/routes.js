@@ -14,7 +14,7 @@ routes.get('/acc', accIndex)
 
 routes.post('/acc', accStore)
 
-routes.get('/acc/:email', getAcc)
+routes.get('/acc/:username', getAcc)
 
 routes.get('/products', index)
 

@@ -13,9 +13,9 @@ async function accIndex(req, res){
 }
 
 async function getAcc(req, res){
-    const { email } = req.params
+    const { username } = req.params
 
-    const obj = { email: email}
+    const obj = { username: username}
 
     try{
         const account = await Account.find(obj)
