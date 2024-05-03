@@ -10,8 +10,6 @@ app.use(cors());
 app.use(express.json());
 db.connect()
 app.use(routes)
-app.use(cors({
-    origin: 'https://univesp-mg-stock.vercel.app' 
-  }));
+app.use(cors({origin: 'https://api-univesp-mgs-tock.vercel.app/' }));
 
 app.listen(port, () => {console.log(`🚀 Backend started at http://localhost:${port} `)})
