@@ -53,6 +53,7 @@ async function accStore(req, res){
 
 
     async function accRemove(req , res){
+        
         try{
             await res.account.deleteOne()
             return res.status(200).json({ message: 'acc deleted successfully'})
