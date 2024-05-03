@@ -12,6 +12,20 @@ async function accIndex(req, res){
     }
 }
 
+async function getAcc(req, res){
+    const { email } = req.params
+
+    const obj = { email: email}
+
+    try{
+        const account = await Account.find(obj)
+        return res.status(200).json({ account })
+    }catch(err){
+        res.status(500).json({ error: err.message })
+    }
+
+}
+
 
 async function accStore(req, res){
     const { username, password } = req.body
@@ -48,4 +62,4 @@ async function accStore(req, res){
     }
 
 
-export { accIndex, accStore, accRemove }
+export { accIndex, accStore, accRemove, getAcc }

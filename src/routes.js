@@ -1,7 +1,7 @@
 import express from 'express'
 import { index, remove, store, update } from './controllers/ProductController.js'
 import { validateId } from './middlewares/ProductMiddleware.js';
-import { accIndex, accStore } from './controllers/AccountController.js';
+import { accIndex, accStore, getAcc } from './controllers/AccountController.js';
 import SessionController from './controllers/SessionController.js';
 
 
@@ -14,7 +14,7 @@ routes.get('/acc', accIndex)
 
 routes.post('/acc', accStore)
 
-
+routes.get('/acc/:email', getAcc)
 
 routes.get('/products', index)
 
