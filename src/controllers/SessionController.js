@@ -13,9 +13,9 @@ class SessionController {
     async create(req, res){
         // const checkPassword = (user, password) => bcrypt.compare(password, user.password)
 
-        const { email, password } = req.body
+        const { username, password } = req.body
 
-        const user = await Account.findOne({ email })
+        const user = await Account.findOne({ username })
         
         const checkPassword = await bcrypt.compare(password, user.password);
         if (!user){
@@ -27,7 +27,7 @@ class SessionController {
 
         return res.json({
             user: {
-                email,
+                username,
             }, 
             token: jwt.sign({ _id }, SECRET, {
                 expiresIn: '1d',
