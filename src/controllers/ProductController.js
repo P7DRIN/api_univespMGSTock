@@ -31,6 +31,9 @@ async function store(req, res){
         quality,
         postDate
     })
+
+    console.log(product)
+
     try{
         await product.save();
         return res.status(201).json({ messagem: `Product ${prodDescription} added succesfully`})
@@ -42,6 +45,7 @@ async function store(req, res){
 
 async function update(req, res){
     const { _id, transactionType, saleType, prodDescription, price, charge, quantity, quality, postDate } = req.body
+    console.log(req.body)
 
     if( !prodDescription && price ) {
         return res.status(400).json({ error: "You must inform a product description and/or product price before submit!"})
@@ -58,9 +62,9 @@ async function update(req, res){
 
     try{
         await res.product.save()
-        return res.status(200).json({ message: `${productName} updated successfully`})
+        return res.status(200).json({ message: `${prodDescription} updated successfully`})
     }catch(err){
-        res.status(500).json({ err: err.message})
+        res.status(500).json({ err: err.message })
     }
 
 }
