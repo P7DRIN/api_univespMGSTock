@@ -5,33 +5,33 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    prodType: {
+    transactionType: {
         type: String,
         required: true,
     },
-    prodName: {
+    saleType: {
         type: String,
-        required: true
+        required: false
     },
     prodDescription: {
         type: String,
         required: true,
     },
-    prodGender: {
-        type: String,
+    price: {
+        type: Number,
+        required: true
+    },
+    charge: {
+        type: Number,
         required: false
     },
-    prodBrand: {
-        type: String,
+    quantity: {
+        type: Number,
         required: false,
     },
     quality: {
         type: String,
         required: true
-    },
-    price: {
-        type: Number,
-        required: false
     },
     postDate: {
         type: Date,

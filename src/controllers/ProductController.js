@@ -14,26 +14,26 @@ async function index(req, res){
 
 async function store(req, res){
     
-    const { _id, prodType, prodName, prodDescription, prodGender, prodBrand, quality, price, postDate } = req.body;
+    const { _id, transactionType, saleType, prodDescription, price, charge, quantity, quality, postDate } = req.body;
 
-    if(!prodName){
-        return res.status(400).json({error: 'Must inform a product name'})
+    if(!prodDescription){
+        return res.status(400).json({error: 'Must inform a product description'})
     }
 
     const product = new Product ({
         _id: uuid(),
-        prodType,
-        prodName,
+        transactionType,
+        saleType,
         prodDescription,
-        prodGender,
-        prodBrand,
-        quality,
         price,
+        charge,
+        quantity,
+        quality,
         postDate
     })
     try{
         await product.save();
-        return res.status(201).json({ messagem: `Product ${prodName} added succesfully`})
+        return res.status(201).json({ messagem: `Product ${prodDescription} added succesfully`})
     }catch(err){
         res.status(500).json({ error: err.message })
     }
@@ -41,19 +41,19 @@ async function store(req, res){
 }
 
 async function update(req, res){
-    const { prodType, prodName, prodDescription, prodGender, prodBrand, quality, price, postDate } = req.body
+    const { _id, transactionType, saleType, prodDescription, price, charge, quantity, quality, postDate } = req.body
 
-    if( !prodName && !price ) {
-        return res.status(400).json({ error: "You must inform a product name and/or product price before submit!"})
+    if( !prodDescription && price ) {
+        return res.status(400).json({ error: "You must inform a product description and/or product price before submit!"})
     }
     
-    if(prodName) res.product.productName = prodName
-    if(prodType) res.product.prodType = prodType
-    if(prodGender) res.product.prodGender = prodGender
-    if(prodBrand) res.product.prodBrand = prodBrand
-    if(quality) res.product.quality = quality
-    if(price) res.product.productPrice = price
+    if(transactionType) res.product.transactionType = transactionType
+    if(saleType) res.product.saleType = saleType
     if(prodDescription) res.product.prodDescription = prodDescription
+    if(price) res.product.price = price
+    if(charge) res.product.charge = charge
+    if(quantity) res.product.productquantity = quantity
+    if(quality) res.product.quality = quality
     if(postDate) res.product.postDate = postDate
 
     try{
