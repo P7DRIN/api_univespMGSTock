@@ -14,7 +14,7 @@ async function index(req, res){
 
 async function store(req, res){
     
-    const { _id, transactionType, saleType, prodDescription, price, charge, quantity, quality, postDate } = req.body;
+    const { _id, transactionType, saleType, prodDescription, price, quantity, quality, postDate } = req.body;
 
     if(!prodDescription){
         return res.status(400).json({error: 'Must inform a product description'})
@@ -26,7 +26,6 @@ async function store(req, res){
         saleType,
         prodDescription,
         price,
-        charge,
         quantity,
         quality,
         postDate
@@ -44,7 +43,7 @@ async function store(req, res){
 }
 
 async function update(req, res){
-    const { _id, transactionType, saleType, prodDescription, price, charge, quantity, quality, postDate } = req.body
+    const { _id, transactionType, saleType, prodDescription, price, quantity, quality, postDate } = req.body
     console.log(req.body)
 
     if( !prodDescription && price ) {
@@ -55,7 +54,6 @@ async function update(req, res){
     if(saleType) res.product.saleType = saleType
     if(prodDescription) res.product.prodDescription = prodDescription
     if(price) res.product.price = price
-    if(charge) res.product.charge = charge
     if(quantity) res.product.productquantity = quantity
     if(quality) res.product.quality = quality
     if(postDate) res.product.postDate = postDate

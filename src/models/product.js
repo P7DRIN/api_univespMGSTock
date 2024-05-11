@@ -21,10 +21,6 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    charge: {
-        type: Number,
-        required: false
-    },
     quantity: {
         type: Number,
         required: false,
